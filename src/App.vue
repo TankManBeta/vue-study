@@ -1,16 +1,21 @@
 <template>
-  <div id="app" class="demo">
-    <local-button label="局部按钮"></local-button>
+  <div>
+    <child-component v-for="msg in messages" :key="msg.id" :message="msg.text" />
   </div>
 </template>
 
 <script>
-import LocalButton from "./components/LocalButton.vue";
-export default{
-  name: "App",
-  components: {
-    "local-button": LocalButton
-    // LocalButton
-  }
+import ChildComponent from "./components/ChildComponent.vue"
+
+export default {
+  data(){
+    return {
+      messages: [
+        { id: 1, text: "message 1" },
+        { id: 2, text: "message 2" }
+      ]
+    }
+  },
+  components: { ChildComponent }
 }
 </script>
